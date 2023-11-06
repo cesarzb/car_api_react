@@ -122,3 +122,14 @@
   min-width: 400px;
   color: black;
 }
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.layout-elements {
+  display: flex;
+  flex-direction: column;
+}
