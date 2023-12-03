@@ -1,15 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import { API_URL, API_VERSION } from "../../constants";
+import useAuth from "../../hooks/useAuth";
 
 const DeleteBrand = ({ brandId }) => {
   const navigate = useNavigate();
-
+  const { auth } = useAuth();
   const handleSubmit = async () => {
     try {
       const response = await fetch(
         API_URL + API_VERSION + `/brands/${brandId}`,
         {
           method: "DELETE",
+          headers: {
+            Authorization: auth.accessToken,
+          },
         }
       );
       if (!response.ok) {

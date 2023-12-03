@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { API_URL, API_VERSION } from "../../constants";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const CreateBrand = () => {
   const [name, setName] = useState("");
   const [year, setYear] = useState(1234);
-
+  const { auth } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = () => {
@@ -19,6 +20,7 @@ const CreateBrand = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: auth.accessToken,
       },
       body: JSON.stringify(brandData),
     })

@@ -2,15 +2,21 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { API_URL, API_VERSION } from "../../constants";
 import DeleteBrand from "./DeleteBrand";
+import useAuth from "../../hooks/useAuth";
 
 const BrandDetails = () => {
+  const { auth } = useAuth();
   const [brand, setBrand] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const { brandId } = useParams();
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(API_URL + API_VERSION + `/brands/${brandId}`, {})
+    fetch(API_URL + API_VERSION + `/brands/${brandId}`, {
+      headers: {
+        Authorization: auth.accessToken,
+      },
+    })
       .then((response) => response.json())
       .then((payload) => {
         setBrand(payload);

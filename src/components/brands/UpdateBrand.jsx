@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { API_URL, API_VERSION } from "../../constants";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const UpdateBrand = () => {
   const [name, setName] = useState("");
@@ -9,7 +10,7 @@ const UpdateBrand = () => {
 
   const navigate = useNavigate();
   const { brandId } = useParams();
-
+  const { auth } = useAuth();
   const handleSubmit = () => {
     const brandData = {
       brand: {
@@ -22,6 +23,7 @@ const UpdateBrand = () => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        Authorization: auth.accessToken,
       },
       body: JSON.stringify(brandData),
     })
@@ -33,7 +35,11 @@ const UpdateBrand = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(API_URL + API_VERSION + `/brands/${brandId}`, {})
+    fetch(API_URL + API_VERSION + `/brands/${brandId}`, {
+      headers: {
+        Authorization: auth.accessToken,
+      },
+    })
       .then((response) => response.json())
       .then((payload) => {
         setName(payload.name);
