@@ -1,0 +1,67 @@
+.brands-index {
+  max-width: 100%;
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.new-brand-button {
+  max-width: max-content;
+}
+
+.pagination {
+  display: flex;
+  gap: 1rem;
+}
+
+.brands-list {
+  display: flex;
+  flex-grow: 1;
+  gap: 1rem;
+  flex-wrap: wrap;
+  max-width: 80%;
+  justify-content: center;
+  align-content: flex-start;
+  justify-items: start;
+}
+
+.brand-item {
+  border-radius: 1rem;
+  border: 1px solid var(--foreground);
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 190px;
+  height: 190px;
+  max-width: 190px;
+  max-height: 190px;
+  cursor: pointer;
+  transition: background-color 300ms ease;
+}
+
+.light-theme .brand-item:hover {
+  background-color: var(--background);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dark-theme .brand-item:hover {
+  background-color: var(--background);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.brand-name {
+  font-weight: 600;
+  font-size: 1.2rem;
+  min-width: 100%;
+  border-bottom: 1px var(--foreground) solid;
+}
+
+.brand-year {
+  margin-bottom: 1rem;
+}

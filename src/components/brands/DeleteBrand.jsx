@@ -1,8 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { API_URL, API_VERSION } from "../../constants";
 import useAuth from "../../hooks/useAuth";
+import "../../styles/DeleteBrand.css";
+import { useTranslation } from "react-i18next";
 
 const DeleteBrand = ({ brandId }) => {
+  const { t } = useTranslation();
+
   const navigate = useNavigate();
   const { auth } = useAuth();
   const handleSubmit = async () => {
@@ -27,11 +31,9 @@ const DeleteBrand = ({ brandId }) => {
   };
 
   return (
-    <div className="delete-team">
-      <button className="delete-team-button" onClick={handleSubmit}>
-        Delete brand
-      </button>
-    </div>
+    <button className="delete-brand-button" onClick={handleSubmit}>
+      {t("Delete brand")}
+    </button>
   );
 };
 

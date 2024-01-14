@@ -1,11 +1,10 @@
-import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Layout from "./components/Layout";
-import CarsList from "./components/CarsList";
-import CarDetails from "./components/CarDetails";
-import CreateCar from "./components/CreateCar";
-import UpdateCar from "./components/UpdateCar";
+import CarsList from "./components/cars/CarsList";
+import CarDetails from "./components/cars/CarDetails";
+import CreateCar from "./components/cars/CreateCar";
+import UpdateCar from "./components/cars/UpdateCar";
 import BrandDetails from "./components/brands/BrandDetails";
 import BrandsList from "./components/brands/BrandsList";
 import CreateBrand from "./components/brands/CreateBrand";
@@ -13,6 +12,7 @@ import UpdateBrand from "./components/brands/UpdateBrand";
 import RequireAuth from "./components/RequireAuth";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import "./i18n";
 
 function App() {
   return (

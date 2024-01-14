@@ -2,10 +2,18 @@ import { Link, Outlet } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../constants";
+import "../styles/Layout.css";
+import { useState } from "react";
+import { Briefcase, Home, ShoppingCart, Moon, Sun, User } from "react-feather";
+import LanguageSelector from "./LanguageSelector";
+import { useTranslation } from "react-i18next";
 
 const Layout = () => {
+  const { t } = useTranslation();
+
   const { auth, saveToken } = useAuth();
   const navigate = useNavigate();
+  const [theme, setTheme] = useState("light-theme");
 
   const clickHandler = async () => {
     try {
@@ -26,27 +34,51 @@ const Layout = () => {
       console.error("An error occurred:", error);
     }
   };
+
+  const toggleTheme = () => {
+    if (theme === "light-theme") {
+      setTheme("dark-theme");
+    } else {
+      setTheme("light-theme");
+    }
+  };
+
   return (
-    <div className="layout-elements">
-      <div className="header nav-links">
-        <Link to={`/`} className="brand-link">
-          Main page
-        </Link>
-        <Link to={`/brands`} className="brand-link">
-          Brands list
-        </Link>
-        <Link to={`/cars`} className="brand-link">
-          Cars list
-        </Link>
-        {auth.accessToken ? (
-          <Link onClick={clickHandler}>Logout</Link>
-        ) : (
-          <Link to={`/login`} className="brand-link">
-            Login
+    <div className={`layout ${theme}`}>
+      <div className="navbar">
+        <div className="top-nav">
+          <Link to={`/`} className="nav-link">
+            <Home />
+            <span>{t("Main page")}</span>
           </Link>
-        )}
+          <Link to={`/brands`} className="nav-link">
+            <Briefcase />
+            <span>{t("Brands list")}</span>
+          </Link>
+          <Link to={`/cars`} className="nav-link">
+            <ShoppingCart />
+            <span>{t("Cars list")}</span>
+          </Link>
+        </div>
+        <div className="bottom-nav">
+          {auth.accessToken ? (
+            <Link onClick={clickHandler} className="nav-link">
+              <User />
+              {t("Logout")}
+            </Link>
+          ) : (
+            <Link to={`/login`} className="nav-link">
+              <User />
+              {t("Login")}
+            </Link>
+          )}
+          <a className="theme-toggle" onClick={() => toggleTheme()}>
+            {theme === "light-theme" ? <Moon /> : <Sun />}
+          </a>
+        </div>
       </div>
-      <main className="App">
+      <main className="main-content">
+        <LanguageSelector />
         <Outlet />
       </main>
     </div>

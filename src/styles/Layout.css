@@ -1,0 +1,92 @@
+.light-theme {
+  --foreground: #000000;
+  --background: #eeeeee;
+  --background-secondary: #f5f5f5;
+  --primary: #0092e3;
+  --font: Nunito;
+}
+
+.dark-theme {
+  --foreground: #ffffff;
+  --background: #222222;
+  --background-secondary: #333333;
+  --primary: #0017e3;
+  --font: Nunito;
+}
+
+.layout {
+  min-height: 100%;
+  min-width: 100%;
+  display: flex;
+  color: var(--foreground);
+}
+
+.navbar {
+  height: 100%;
+  width: 18%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--background);
+  padding: 1rem 0 1rem 1rem;
+  border-right: 1px solid var(--foreground);
+}
+
+.top-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.bottom-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 1rem;
+}
+
+.nav-link {
+  color: var(--foreground);
+  font-size: 1.2rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.main-content {
+  width: 100%;
+  height: 100%;
+  background-color: var(--background-secondary);
+  display: flex;
+  justify-content: center;
+}
+
+.theme-toggle {
+  border: 2px solid transparent;
+  background-color: var(--background);
+  color: var(--foreground);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25%;
+  height: 2rem;
+  width: 2rem;
+}
+
+.language-selector {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.languages-list-container {
+  position: absolute;
+  top: 6rem;
+  right: 1rem;
+}
+.languages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

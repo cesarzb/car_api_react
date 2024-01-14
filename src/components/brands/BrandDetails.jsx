@@ -3,12 +3,15 @@ import { Link, useParams } from "react-router-dom";
 import { API_URL, API_VERSION } from "../../constants";
 import DeleteBrand from "./DeleteBrand";
 import useAuth from "../../hooks/useAuth";
+import "../../styles/BrandDetails.css";
+import { useTranslation } from "react-i18next";
 
 const BrandDetails = () => {
   const { auth } = useAuth();
   const [brand, setBrand] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const { brandId } = useParams();
+  const { t } = useTranslation();
 
   useEffect(() => {
     setIsLoading(true);
@@ -26,22 +29,23 @@ const BrandDetails = () => {
   return isLoading ? (
     <div className="loading">Loading...</div>
   ) : (
-    <main className="team-details">
-      <div className="team-details-item team-item" key={brand.id}>
-        <div className="team-details-description team-description">
-          Name: {brand.name}
-        </div>
-        <div className="team-details-description team-description">
-          Year: {brand.year}
-        </div>
+    <main className="brand-details-card">
+      <div className="brand-details-card-top">
+        <div className="brand-details-name">{brand.name}</div>
+        <div className="brand-details-year">{brand.year}</div>
       </div>
-      <Link to={`/brands/${brand.id}/edit`} className="team-edit-link">
-        Edit brand
-      </Link>
-      <DeleteBrand brandId={brandId} />
-      <Link to={`/brands`} className="teams-link">
-        Back to brands list
-      </Link>
+      <div className="brand-details-links">
+        <Link to={`/brands`} className="brand-details-link button">
+          {t("Back to brands list")}
+        </Link>
+        <Link
+          to={`/brands/${brand.id}/edit`}
+          className="car-details-link button"
+        >
+          {t("Edit brand")}
+        </Link>
+        <DeleteBrand brandId={brandId} className="button" />
+      </div>
     </main>
   );
 };

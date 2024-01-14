@@ -2,8 +2,11 @@ import { useState, ChangeEvent, FormEvent } from "react";
 import { API_URL } from "../constants";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import { useTranslation } from "react-i18next";
 
 const Register = () => {
+  const { t } = useTranslation();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -70,7 +73,7 @@ const Register = () => {
     <form className="auth-form" onSubmit={handleSubmit}>
       <div className="form-field">
         <label htmlFor="email" className="form-label">
-          Email
+          {t("Email")}
         </label>
         <input
           id="email"
@@ -82,7 +85,7 @@ const Register = () => {
 
       <div className="form-field">
         <label htmlFor="password" className="form-label">
-          Password
+          {t("Password")}
         </label>
         <input
           id="password"
@@ -95,7 +98,7 @@ const Register = () => {
 
       <div className="form-field">
         <label htmlFor="password-confirmation" className="form-label">
-          Password Confirmation
+          {t("Password Confirmation")}
         </label>
         <input
           id="password-confirmation"
@@ -106,8 +109,8 @@ const Register = () => {
         ></input>
       </div>
 
-      <button className="register-btn">Register</button>
-      <Link to="/login">Login</Link>
+      <button className="register-btn">{t("Register")}</button>
+      <Link to="/login">{t("Login")}</Link>
     </form>
   );
 };

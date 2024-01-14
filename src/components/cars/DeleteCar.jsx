@@ -1,7 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { API_URL, API_VERSION } from "../constants";
+import { API_URL, API_VERSION } from "../../constants";
+import "../../styles/DeleteCar.css";
+import { useTranslation } from "react-i18next";
 
 const DeleteCar = ({ carId }) => {
+  const { t } = useTranslation();
+
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
@@ -20,11 +24,9 @@ const DeleteCar = ({ carId }) => {
   };
 
   return (
-    <div className="delete-team">
-      <button className="delete-team-button" onClick={handleSubmit}>
-        Delete car
-      </button>
-    </div>
+    <button className="delete-car-button" onClick={handleSubmit}>
+      {t("Delete car")}
+    </button>
   );
 };
 

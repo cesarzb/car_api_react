@@ -1,0 +1,58 @@
+.create-brand-form {
+  width: 50%;
+  height: 80%;
+  background-color: var(--background);
+  border: 1px solid var(--foreground);
+  border-radius: 1rem;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1rem;
+}
+
+.link-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 50%;
+}
+
+.form-label {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.form-input {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--foreground);
+  width: 100%;
+}
+
+.form-input-invalid {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid red;
+  width: 100%;
+}
+
+.error-message {
+  border: 1px solid red;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  border-radius: 1rem;
+}

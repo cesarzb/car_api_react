@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import { API_URL } from "../constants";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import "../styles/Login.css";
+import { useTranslation } from "react-i18next";
 
 const Login = () => {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -52,7 +55,7 @@ const Login = () => {
     <form className="auth-form" onSubmit={handleSubmit}>
       <div className="form-field">
         <label htmlFor="email" className="form-label">
-          Email
+          {t("Email")}
         </label>
         <input
           id="email"
@@ -64,7 +67,7 @@ const Login = () => {
 
       <div className="form-field">
         <label htmlFor="password" className="form-label">
-          Password
+          {t("Password")}
         </label>
         <input
           id="password"
@@ -75,8 +78,10 @@ const Login = () => {
         ></input>
       </div>
 
-      <button className="login-btn">Login</button>
-      <Link to="/register">Register</Link>
+      <div className="link-group">
+        <button className="login-btn">{t("Login")}</button>
+        <Link to="/register">{t("Register")}</Link>
+      </div>
     </form>
   );
 };

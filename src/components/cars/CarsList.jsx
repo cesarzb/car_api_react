@@ -1,48 +1,50 @@
 import React, { useEffect, useState } from "react";
 import { API_URL, API_VERSION } from "../../constants";
 import { Link, useNavigate } from "react-router-dom";
-import "../../styles/BrandsList.css";
+import "../../styles/CarsList.css";
 import { useTranslation } from "react-i18next";
 
-const BrandsList = () => {
+const CarsList = () => {
   const { t } = useTranslation();
-  const [brands, setBrands] = useState([]);
+
+  const [cars, setCars] = useState([]);
   const [page, setPage] = useState(1); // Initial page
+
   const navigate = useNavigate();
 
-  const fetchBrands = (pageNumber) => {
-    fetch(`${API_URL}${API_VERSION}/brands?page=${pageNumber}`)
+  const fetchCars = (pageNumber) => {
+    fetch(`${API_URL}${API_VERSION}/cars?page=${pageNumber}`)
       .then((response) => response.json())
-      .then((payload) => setBrands(payload));
+      .then((payload) => setCars(payload));
   };
 
   useEffect(() => {
-    fetchBrands(page); // Initial fetch
+    fetchCars(page);
   }, [page]);
 
   const handlePageChange = (newPage) => {
     setPage(newPage);
   };
 
-  const handleBrandClick = (id) => {
-    navigate(`/brands/${id}`);
+  const handleCarClick = (id) => {
+    navigate(`/cars/${id}`);
   };
 
   return (
-    <main className="brands-index">
-      <Link className="button new-car-button" to="/brands/new">
-        {t("Create a new brand")}
+    <div className="cars-index">
+      <Link className="button new-car-button" to="/cars/new">
+        {t("Create a new car")}
       </Link>
-      {brands.length > 0 && (
-        <div className="brands-list">
-          {brands.map((brand) => (
+      {cars.length > 0 && (
+        <div className="cars-list">
+          {cars.map((car) => (
             <div
-              className="brand-item"
-              key={brand.id}
-              onClick={() => handleBrandClick(brand.id)}
+              className="car-item"
+              key={car.id}
+              onClick={() => handleCarClick(car.id)}
             >
-              <div className="brand-name">{brand.name}</div>
-              <div className="brand-year">{brand.year}</div>
+              <div className="car-model">{car.model}</div>
+              <div className="car-brand">{car.brand.name}</div>
             </div>
           ))}
         </div>
@@ -56,13 +58,13 @@ const BrandsList = () => {
         </button>
         <button
           onClick={() => handlePageChange(page + 1)}
-          disabled={brands.length < 12}
+          disabled={cars.length < 12}
         >
           {t("Next")}
         </button>
       </div>
-    </main>
+    </div>
   );
 };
 
-export default BrandsList;
+export default CarsList;

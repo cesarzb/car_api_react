@@ -1,0 +1,69 @@
+.car-details-card {
+  border-radius: 1rem;
+  background-color: var(--background);
+  border: 1px solid var(--foreground);
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  height: 80%;
+  align-self: center;
+  cursor: pointer;
+  transition: background-color 300ms ease;
+}
+
+.car-details-card-top {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  align-self: flex-start;
+  gap: 1rem;
+  width: 100%;
+}
+
+.car-details-model {
+  font-size: 5rem;
+  font-weight: 800;
+}
+
+.car-details-brand {
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.car-details-seats {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.car-details-price {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.car-details-boring-info {
+  padding: 3rem 1rem 2rem;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.car-details-links {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem 1rem;
+  width: 100%;
+}
+
+.car-details-link {
+  min-width: 150px;
+}
+
+.car-details-card-bottom {
+  width: 100%;
+  padding: 0 1rem 1rem;
+}
